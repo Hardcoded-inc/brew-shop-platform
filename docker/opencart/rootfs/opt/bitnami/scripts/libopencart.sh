@@ -178,7 +178,8 @@ opencart_initialize() {
         opencart_update_hostname "${OPENCART_HOST:-localhost}"
 
         # info "Persisting OpenCart installation"
-        persist_app "$app_name" "$OPENCART_DATA_TO_PERSIST"
+        # Remove symlinks
+        # persist_app "$app_name" "$OPENCART_DATA_TO_PERSIST"
 
         # This is executed after persisting the app directory to avoid a broken install in case of an error
         opencart_protect_storage_dir
@@ -188,7 +189,8 @@ opencart_initialize() {
             mv "${OPENCART_BASE_DIR}/admin" "${OPENCART_BASE_DIR}/administration"
         fi
 
-        restore_persisted_app "$app_name" "$OPENCART_DATA_TO_PERSIST"
+        # Remove symlinks
+        # restore_persisted_app "$app_name" "$OPENCART_DATA_TO_PERSIST"
 
         info "Trying to connect to the database server"
         db_host="$(opencart_conf_get "DB_HOSTNAME")"
