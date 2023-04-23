@@ -23,10 +23,8 @@ services:
       - OPENCART_DATABASE_NAME=bitnami_opencart
       # ALLOW_EMPTY_PASSWORD is recommended only for development.
       - ALLOW_EMPTY_PASSWORD=yes
-    # volumes:
-    # - "./catalog:/opt/bitnami/opencart/catalog"
-    # - "./image:/opt/bitnami/opencart/image"
-    # - "./opencart_data:/bitnami/opencart"
-    # - "./opencart_storage_data:/bitnami/opencart_storage/"
+    volumes:
+      - "./opencart:/bitnami/opencart"
+      - "./opencart_storage:/bitnami/opencart_storage/"
     depends_on:
       - mariadb

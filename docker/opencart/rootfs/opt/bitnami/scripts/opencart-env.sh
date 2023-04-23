@@ -71,7 +71,7 @@ export OPENCART_ADMIN_CONF_FILE="${OPENCART_BASE_DIR}/administration/config.php"
 # OpenCart persistence configuration
 export OPENCART_VOLUME_DIR="${BITNAMI_VOLUME_DIR}/opencart"
 export OPENCART_STORAGE_DIR="${BITNAMI_VOLUME_DIR}/opencart_storage"
-export OPENCART_DATA_TO_PERSIST="${OPENCART_DATA_TO_PERSIST:-config.php administration/config.php}"
+export OPENCART_DATA_TO_PERSIST="${OPENCART_DATA_TO_PERSIST:-.}"
 
 # OpenCart configuration
 export OPENCART_HOST="${OPENCART_HOST:-}" # only used during the first initialization
