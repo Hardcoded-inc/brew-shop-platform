@@ -1,0 +1,1 @@
+opencart-4.0.2-1,GPL-3.0-only,https://github.com/opencart/opencart/releases/download/4.0.2.1/opencart-4.0.2.1.zip
