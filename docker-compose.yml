@@ -26,5 +26,6 @@ services:
     volumes:
       - "./opencart:/bitnami/opencart"
       - "./opencart_storage:/bitnami/opencart_storage/"
+      # - "./opencart/catalog:/opt/bitnami/opencart/catalog"
     depends_on:
       - mariadb
