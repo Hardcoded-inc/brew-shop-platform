@@ -46,6 +46,7 @@ RUN chmod g+rwX /opt/bitnami
 
 COPY rootfs /
 RUN chmod -R +x /opt/bitnami/scripts
+RUN chmod -R +x /post-init.sh
 RUN /opt/bitnami/scripts/mysql-client/postunpack.sh
 RUN /opt/bitnami/scripts/apache/postunpack.sh
 RUN /opt/bitnami/scripts/php/postunpack.sh
