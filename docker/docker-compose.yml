@@ -15,17 +15,19 @@ services:
   #     MYSQL_PORT: 3306
 
   apache:
-    # build: ./apache
     image: webdevops/php-apache:8.2
-    # platforms: linux/amd64
     volumes:
       # - ./logs/apache:/var/log/apache2
       # - ./apache/sites:/etc/apache2/sites-available
       - ../:/app/
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USERNAME: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      DB_NAME: ${MYSQL_DATABASE}
+      MYSQL_PORT: 3306
     ports:
       - "80:80"
-    # depends_on:
-    #   - php-fpm
 
   mysql:
     image: mysql:5.7
