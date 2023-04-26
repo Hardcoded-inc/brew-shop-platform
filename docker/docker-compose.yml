@@ -1,19 +1,6 @@
 version: "2"
 
 services:
-  # php-fpm:
-  #   build: ./php-fpm
-  #   volumes:
-  #     - ../:/var/www
-  #   expose:
-  #     - "9000"
-  #   environment:
-  #     MYSQL_HOST: mysql
-  #     MYSQL_USERNAME: ${MYSQL_USER}
-  #     MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-  #     DB_NAME: ${MYSQL_DATABASE}
-  #     MYSQL_PORT: 3306
-
   apache:
     image: webdevops/php-apache:8.2
     volumes:
