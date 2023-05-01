@@ -18,24 +18,6 @@
             <input type="checkbox" name="description" value="1" id="input-description" class="form-check-input"{% if description %} checked{% endif %}/> <label for="input-description" class="form-check-label">{{ entry_description }}</label>
           </div>
         </div>
-        <div class="col">
-          <select name="category_id" id="input-category" class="form-select mb-1">
-            <option value="0">{{ text_category }}</option>
-            {% for category_1 in categories %}
-              <option value="{{ category_1.category_id }}"{% if category_1.category_id == category_id %} selected{% endif %}>{{ category_1.name }}</option>
-              {% for category_2 in category_1.children %}
-                <option value="{{ category_2.category_id }}"{% if category_2.category_id == category_id %} selected{% endif %}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ category_2.name }}</option>
-                {% for category_3 in category_2.children %}
-                  <option value="{{ category_3.category_id }}"{% if category_3.category_id == category_id %} selected{% endif %}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ category_3.name }}</option>
-                {% endfor %}
-              {% endfor %}
-            {% endfor %}
-          </select>
-          <div class="form-check">
-            <input type="checkbox" name="sub_category" value="1" id="input-sub-category" class="form-check-input"{% if sub_category %} checked{% endif %}/> <label for="input-sub-category" class="form-check-label">{{ text_sub_category }}</label>
-          </div>
-        </div>
-      </div>
       <div class="row">
         <div class="col">
           <button type="button" id="button-search" class="btn btn-primary">{{ button_search }}</button>
