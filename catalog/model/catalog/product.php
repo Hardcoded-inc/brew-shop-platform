@@ -47,16 +47,6 @@ class Product extends \Opencart\System\Engine\Model {
 				}
 			}
 
-			if (!empty($data['filter_name'])) {
-				$sql .= " OR LCASE(p.`model`) = '" . oc_strtolower($data['filter_name']) . "'";
-				$sql .= " OR LCASE(p.`sku`) = '" . oc_strtolower($data['filter_name']) . "'";
-				$sql .= " OR LCASE(p.`upc`) = '" . oc_strtolower($data['filter_name']) . "'";
-				$sql .= " OR LCASE(p.`ean`) = '" . oc_strtolower($data['filter_name']) . "'";
-				$sql .= " OR LCASE(p.`jan`) = '" . oc_strtolower($data['filter_name']) . "'";
-				$sql .= " OR LCASE(p.`isbn`) = '" . oc_strtolower($data['filter_name']) . "'";
-				$sql .= " OR LCASE(p.`mpn`) = '" . oc_strtolower($data['filter_name']) . "'";
-			}
-
 			$sql .= ")";
 
 			echo($sql);
