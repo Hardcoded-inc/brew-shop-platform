@@ -35,7 +35,7 @@ class Product extends \Opencart\System\Engine\Model {
 			$sql .= " OR pd.`description` LIKE '" . '%' . (string)$phrase . '%' . "'";
 			$sql .= ")";
 
-			echo($sql);
+			// echo($sql);
 		}
 
 		$sql .= " GROUP BY p.product_id";
@@ -85,12 +85,12 @@ class Product extends \Opencart\System\Engine\Model {
 		$query = $this->db->query($sql);
 
 		foreach ($query->rows as $result) {
-			echo("--------------------------------------------------------------------------------------------------------------");
+			echo("<br/>");
 			print_r($result);
 			// for never get one more time with same product id
-			if (!isset($product_data[$result['product_id']])) {
-				$product_data[$result['product_id']] = $this->model_catalog_product->getProduct($result['product_id']);
-			}
+			// if (!isset($product_data[$result['product_id']])) {
+			// 	$product_data[$result['product_id']] = $this->model_catalog_product->getProduct($result['product_id']);
+			// }
 		}
 
 
