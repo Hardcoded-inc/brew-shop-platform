@@ -47,24 +47,6 @@ class Product extends \Opencart\System\Engine\Model {
 				}
 			}
 
-			if (!empty($data['filter_name']) && !empty($data['filter_tag'])) {
-				$sql .= " OR ";
-			}
-
-			if (!empty($data['filter_tag'])) {
-				$implode = [];
-
-				$words = explode(' ', trim(preg_replace('/\s+/', ' ', $data['filter_tag'])));
-
-				foreach ($words as $word) {
-					$implode[] = "pd.`tag` LIKE '" . '%' . $word . '%' . "'";
-				}
-
-				if ($implode) {
-					$sql .= " " . implode(" AND ", $implode) . "";
-				}
-			}
-
 			if (!empty($data['filter_name'])) {
 				$sql .= " OR LCASE(p.`model`) = '" . oc_strtolower($data['filter_name']) . "'";
 				$sql .= " OR LCASE(p.`sku`) = '" . oc_strtolower($data['filter_name']) . "'";

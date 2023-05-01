@@ -14,13 +14,6 @@ class Search extends \Opencart\System\Engine\Controller {
 			$search = '';
 		}
 
-		if (isset($this->request->get['tag'])) {
-			$tag = $this->request->get['tag'];
-		} elseif (isset($this->request->get['search'])) {
-			$tag = $this->request->get['search'];
-		} else {
-			$tag = '';
-		}
 
 		if (isset($this->request->get['description'])) {
 			$description = $this->request->get['description'];
@@ -66,8 +59,6 @@ class Search extends \Opencart\System\Engine\Controller {
 
 		if (isset($this->request->get['search'])) {
 			$this->document->setTitle($this->language->get('heading_title') .  ' - ' . $this->request->get['search']);
-		} elseif (isset($this->request->get['tag'])) {
-			$this->document->setTitle($this->language->get('heading_title') .  ' - ' . $this->language->get('heading_tag') . $this->request->get['tag']);
 		} else {
 			$this->document->setTitle($this->language->get('heading_title'));
 		}
@@ -83,10 +74,6 @@ class Search extends \Opencart\System\Engine\Controller {
 
 		if (isset($this->request->get['search'])) {
 			$url .= '&search=' . urlencode(html_entity_decode($this->request->get['search'], ENT_QUOTES, 'UTF-8'));
-		}
-
-		if (isset($this->request->get['tag'])) {
-			$url .= '&tag=' . urlencode(html_entity_decode($this->request->get['tag'], ENT_QUOTES, 'UTF-8'));
 		}
 
 		if (isset($this->request->get['description'])) {
@@ -172,10 +159,9 @@ class Search extends \Opencart\System\Engine\Controller {
 
 		$data['products'] = [];
 
-		if (isset($this->request->get['search']) || isset($this->request->get['tag'])) {
+		if (isset($this->request->get['search'])) {
 			$filter_data = [
 				'filter_name'         => $search,
-				'filter_tag'          => $tag,
 				'filter_description'  => $description,
 				'filter_category_id'  => $category_id,
 				'filter_sub_category' => $sub_category,
