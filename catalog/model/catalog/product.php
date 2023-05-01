@@ -27,28 +27,15 @@ class Product extends \Opencart\System\Engine\Model {
 
 
 		if (!empty($data['filter_name'])) {
+			$phrase = $data['filter_name'];
+
+			// Search in names and descriptions
 			$sql .= " AND (";
-
-			if (!empty($data['filter_name'])) {
-				$implode = [];
-
-				$words = explode(' ', trim(preg_replace('/\s+/', ' ', $data['filter_name'])));
-
-				foreach ($words as $word) {
-					$implode[] = "pd.`name` LIKE '" . '%' . $word . '%' . "'";
-				}
-
-				if ($implode) {
-					$sql .= " " . implode(" AND ", $implode) . "";
-				}
-
-				$sql .= " OR pd.`description` LIKE '" . '%' . (string)$data['filter_name'] . '%' . "'";
-			}
-
+			$sql .= "pd.`name` LIKE '" . '%' . (string)$phrase . '%' . "'";
+			$sql .= " OR pd.`description` LIKE '" . '%' . (string)$phrase . '%' . "'";
 			$sql .= ")";
 
 			echo($sql);
-
 		}
 
 		if (!empty($data['filter_manufacturer_id'])) {
