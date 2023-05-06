@@ -7,7 +7,6 @@ class Product extends \Opencart\System\Engine\Model {
 		if ($query->num_rows) {
 			$product_data = $query->row;
 
-			print_r(array_keys($product_data));
 
 			$product_data['variant'] = (array)json_decode($query->row['variant'], true);
 			$product_data['override'] = (array)json_decode($query->row['override'], true);
