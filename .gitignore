@@ -11,7 +11,7 @@ system/logs/
 
 system/storage/vendor
 system/storage/logs
-system/storage/cache/template
+system/storage/cache
 
 # vQmod log files
 vqmod/logs/*
