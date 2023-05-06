@@ -1,4 +1,5 @@
 .htaccess
+.idea/
 
 !index.html
 
@@ -8,7 +9,9 @@ image/cache/
 system/cache/
 system/logs/
 
-system/storage/
+system/storage/vendor
+system/storage/logs
+system/storage/cache/template
 
 # vQmod log files
 vqmod/logs/*
