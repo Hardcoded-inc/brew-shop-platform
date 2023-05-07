@@ -9,6 +9,7 @@ image/cache/
 system/cache/
 system/logs/
 
+system/storage/session
 system/storage/vendor
 system/storage/logs
 system/storage/cache
