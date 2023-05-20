@@ -133,8 +133,6 @@ class Customer extends \Opencart\System\Engine\Model {
 			$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
 		}
 
-		print_r($sql);
-
 		$query = $this->db->query($sql);
 
 		return $query->rows;
