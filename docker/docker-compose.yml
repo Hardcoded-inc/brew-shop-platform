@@ -1,12 +1,12 @@
 version: "2"
 
 services:
-  apache:
+  brew-shop:
     image: webdevops/php-apache:8.2
     volumes:
       # - ./logs/apache:/var/log/apache2
       # - ./apache/sites:/etc/apache2/sites-available
-      - ../:/app/
+      - ../brew-shop/:/app/
     env_file: .env
     environment:
       MYSQL_HOST: mysql
