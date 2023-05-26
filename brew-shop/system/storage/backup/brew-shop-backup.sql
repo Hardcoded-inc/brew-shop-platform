@@ -30,14 +30,19 @@ TRUNCATE TABLE `oc_attribute_group_description`;
 
 TRUNCATE TABLE `oc_banner`;
 
+INSERT INTO `oc_banner` (`banner_id`, `name`, `status`) VALUES ('2', 'Main page', '1');
 
 TRUNCATE TABLE `oc_banner_image`;
 
+INSERT INTO `oc_banner_image` (`banner_image_id`, `banner_id`, `language_id`, `title`, `link`, `image`, `sort_order`) VALUES ('17', '2', '1', 'Filter coffee', '', 'catalog/Banner/speciality-coffee-4568578_1280.jpg', '0');
+INSERT INTO `oc_banner_image` (`banner_image_id`, `banner_id`, `language_id`, `title`, `link`, `image`, `sort_order`) VALUES ('18', '2', '1', 'Pour over', '', 'catalog/Banner/speciality-coffee-4568579_1280.jpg', '0');
+INSERT INTO `oc_banner_image` (`banner_image_id`, `banner_id`, `language_id`, `title`, `link`, `image`, `sort_order`) VALUES ('19', '2', '1', 'French press', '', 'catalog/Banner/speciality-coffee-coffee-coffee-culture-coffee-bean-caffeine-drink.jpg', '0');
+INSERT INTO `oc_banner_image` (`banner_image_id`, `banner_id`, `language_id`, `title`, `link`, `image`, `sort_order`) VALUES ('20', '2', '1', 'Turkey coffee', '', 'catalog/Banner/speciality-coffee-coffee-single-origin-barista-arabica-beverage.jpg', '0');
+INSERT INTO `oc_banner_image` (`banner_image_id`, `banner_id`, `language_id`, `title`, `link`, `image`, `sort_order`) VALUES ('21', '2', '1', 'Amazing coffee', '', 'catalog/Banner/coffee-caffeine-cafe-latte.jpg', '1');
 
 TRUNCATE TABLE `oc_cart`;
 
 INSERT INTO `oc_cart` (`cart_id`, `api_id`, `customer_id`, `session_id`, `product_id`, `subscription_plan_id`, `option`, `quantity`, `date_added`) VALUES ('2', '0', '1', 'e8253964fe5a2151392383496b', '43', '0', '[]', '2', '2023-05-24 20:12:54');
-INSERT INTO `oc_cart` (`cart_id`, `api_id`, `customer_id`, `session_id`, `product_id`, `subscription_plan_id`, `option`, `quantity`, `date_added`) VALUES ('5', '1', '0', 'd6bfe83ae05be58c54971a883f', '52', '0', '[]', '1', '2023-05-26 19:05:56');
 
 TRUNCATE TABLE `oc_category`;
 
@@ -1145,8 +1150,8 @@ TRUNCATE TABLE `oc_marketing_report`;
 TRUNCATE TABLE `oc_module`;
 
 INSERT INTO `oc_module` (`module_id`, `name`, `code`, `setting`) VALUES ('1', 'Category Banner', 'opencart.banner', '{"name":"Category Banner","banner_id":"6","effect":"fade","items":"1","controls":"0","indicators":"0","interval":"5000","width":"200","height":"180","status":"1"}');
-INSERT INTO `oc_module` (`module_id`, `name`, `code`, `setting`) VALUES ('2', 'Featured', 'opencart.featured', '{"name":"Featured","product_name":"","product":["43","40","42","30"],"axis":"horizontal","limit":"4","width":"200","height":"200","status":"1"}');
-INSERT INTO `oc_module` (`module_id`, `name`, `code`, `setting`) VALUES ('3', 'Homepage Slideshow', 'opencart.banner', '{"name":"Homepage Slideshow","banner_id":"7","effect":"slide","items":"1","controls":"1","indicators":"1","interval":"5000","width":"1140","height":"380","status":"1"}');
+INSERT INTO `oc_module` (`module_id`, `name`, `code`, `setting`) VALUES ('2', 'Featured', 'opencart.featured', '{"name":"Featured","product":["51","53","56","58"],"axis":"horizontal","width":"200","height":"200","status":"1","module_id":"2"}');
+INSERT INTO `oc_module` (`module_id`, `name`, `code`, `setting`) VALUES ('3', 'Homepage Slideshow', 'opencart.banner', '{"name":"Homepage Slideshow","banner_id":"2","effect":"slide","items":"1","controls":"1","indicators":"1","interval":"5000","width":"1140","height":"380","status":"1","module_id":"3"}');
 INSERT INTO `oc_module` (`module_id`, `name`, `code`, `setting`) VALUES ('4', 'Homepage Manufacturers', 'opencart.banner', '{"name":"Homepage Manufacturers","banner_id":"8","effect":"slide","items":"5","controls":"1","indicators":"1","interval":"5000","width":"130","height":"100","status":"1"}');
 
 TRUNCATE TABLE `oc_notification`;
@@ -1374,8 +1379,10 @@ INSERT INTO `oc_seo_url` (`seo_url_id`, `store_id`, `language_id`, `key`, `value
 
 TRUNCATE TABLE `oc_session`;
 
+INSERT INTO `oc_session` (`session_id`, `data`, `expire`) VALUES ('33677500a723520450f346cd46', '{"currency":"USD"}', '2023-05-27 20:24:24');
 INSERT INTO `oc_session` (`session_id`, `data`, `expire`) VALUES ('44cb01bdbe094d060d18bec022', '{"currency":"USD"}', '2023-05-26 20:45:21');
-INSERT INTO `oc_session` (`session_id`, `data`, `expire`) VALUES ('e8253964fe5a2151392383496b', '{"currency":"USD","review_token":"76c0d881dc8fba0597d64f03cf895093","customer":{"customer_id":0,"customer_group_id":1,"firstname":"test","lastname":"test","email":"test@test.com","telephone":"","custom_field":[]},"customer_token":"a8e6cf9f3f664e9941a10f7407","user_id":"1","user_token":"2c6c2507060924a4b7af783cd4a8920a","compare":[],"shipping_address":{"address_id":0,"firstname":"test","lastname":"test","company":"","address_1":"Kasprzaka 2","address_2":"","city":"Poznan","postcode":"1234512","zone_id":"2645","zone":"Wielkopolskie","zone_code":"WP","country_id":"170","country":"Poland","iso_code_2":"PL","iso_code_3":"POL","address_format":"{firstname} {lastname}\r\n{company}\r\n{address_1}\r\n{address_2}\r\n{city}, {zone} {postcode}\r\n{country}","custom_field":""},"api_session":"d6bfe83ae05be58c54971a883f"}', '2023-05-27 19:51:05');
+INSERT INTO `oc_session` (`session_id`, `data`, `expire`) VALUES ('5f151737bec22f9186a41e1b75', '{"currency":"USD"}', '2023-05-27 19:57:53');
+INSERT INTO `oc_session` (`session_id`, `data`, `expire`) VALUES ('e8253964fe5a2151392383496b', '{"currency":"USD","review_token":"e9f93a04330a57baf7075e03f43246ef","customer":{"customer_id":0,"customer_group_id":1,"firstname":"test","lastname":"test","email":"test@test.com","telephone":"","custom_field":[]},"customer_token":"a8e6cf9f3f664e9941a10f7407","user_id":"1","user_token":"2c6c2507060924a4b7af783cd4a8920a","compare":[],"shipping_address":{"address_id":0,"firstname":"test","lastname":"test","company":"","address_1":"Kasprzaka 2","address_2":"","city":"Poznan","postcode":"1234512","zone_id":"2645","zone":"Wielkopolskie","zone_code":"WP","country_id":"170","country":"Poland","iso_code_2":"PL","iso_code_3":"POL","address_format":"{firstname} {lastname}\r\n{company}\r\n{address_1}\r\n{address_2}\r\n{city}, {zone} {postcode}\r\n{country}","custom_field":""},"api_session":"d6bfe83ae05be58c54971a883f"}', '2023-05-27 20:33:16');
 
 TRUNCATE TABLE `oc_setting`;
 
