@@ -349,5 +349,28 @@ $(document).ready(function () {
         }
     });
 });
+// Funkcja sprawdzająca zawartość konsoli
+function checkConsoleContent() {
+  // Pobierz zawartość konsoli
+  const consoleContent = window.console ? window.console._commandLineAPI ? window.console._commandLineAPI.history[0] : window.console._history[0] : '';
+  console.log("test");
+  // Sprawdź, czy w konsoli wyświetlono tekst "XSS/2"
+  if (consoleContent.includes('XSS/2')) {
+    // Wyświetl informację w konsoli przeglądarki
+    console.log('Tekst "XSS/2" został wyświetlony w konsoli.');
+  }
+}
+
+// Wywołaj funkcję checkConsoleContent co 1 sekundę przez 5 sekund
+let counter = 0;
+const intervalId = setInterval(() => {
+  checkConsoleContent();
+  counter++;
+
+  // Przestań sprawdzać po 5 sekundach
+  if (counter >= 5) {
+    clearInterval(intervalId);
+  }
+}, 1000);
 //--></script>
 {{ footer }}

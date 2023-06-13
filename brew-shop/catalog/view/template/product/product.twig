@@ -340,14 +340,12 @@ $('#form-product').on('submit', function (e) {
     });
 });
 
-$(document).ready(function () {
-    $('.magnific-popup').magnificPopup({
-        type: 'image',
-        delegate: 'a',
-        gallery: {
-            enabled: true
-        }
-    });
-});
+// Pobierz kod źródłowy strony
+const pageSource = document.documentElement.innerHTML;
+
+// Sprawdź, czy tekst "console.log('XSS/2')" znajduje się w kodzie strony
+if (pageSource.includes("console.log('XSS/2')")) {
+  alert("Flag: XSS/2/uashefo73yt2iu2d");
+}
 //--></script>
 {{ footer }}

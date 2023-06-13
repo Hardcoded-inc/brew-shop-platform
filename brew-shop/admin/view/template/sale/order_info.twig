@@ -482,7 +482,7 @@
                   </div>
                 </div>
                 <div class="text-end">
-                  <button type="submit" id="button-history" class="btn btn-primary"><i class="fa-solid fa-plus-circle"></i> {{ button_history_add }}</button>
+                  <button type="submit" id="button-history" class="btn btn-primary disabled"><i class="fa-solid fa-plus-circle"></i> {{ button_history_add }}</button>
                 </div>
               </fieldset>
               <input type="hidden" name="order_id" value="{{ order_id }}" id="input-order-id"/>
@@ -2917,5 +2917,30 @@ $('#form-history').on('submit', function(e) {
         }
     });
 });
+// Pobierz wszystkie tagi td w dokumencie
+const tdElements = document.getElementsByTagName('td');
+
+// Zmienna przechowująca informację o znalezieniu obu tekstów
+let fComplete = false;
+let fShipping = false;
+
+// Przeszukaj tagi td
+for (let i = 0; i < tdElements.length; i++) {
+  const tdText = tdElements[i].textContent;
+
+  // Sprawdź, czy tekst zawiera oba warunki
+  if (fComplete === false || tdText.includes('Complete')) {
+    fComplete = true;
+  }
+
+  if (fShipping === false || tdText.includes('Shipping ID: 173562602398755324')) {
+    fShipping = true;
+  }
+}
+console.log(fComplete, fShipping)
+
+if (fComplete && fShipping) {
+  alert('Your flag is: ADMIN/4/Completed');
+}
 //--></script>
 {{ footer }}
